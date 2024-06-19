@@ -45,4 +45,32 @@ let negValue = -value;
 str1 = "Hello";
 str2 = " Nanak";
 str3 = str1 + str2;
-console.log(str3);
+// console.log(str3);
+
+// let a = console.log(1 + "2");      //output => 12              //number + number = number
+// console.log(typeof a);             //output => undefined       //number + string = string
+// let b = console.log("1" + 2);      //output => 12              //string + number = string
+// console.log(typeof b);             //output => undefined
+// let c = console.log("1" + 2 + 2);  //output => 122
+// console.log(typeof c)              //output => undefined
+// let d = console.log(1 + 2 + "2");  //output => 32
+// console.log(typeof d);             //output => undefined
+
+// console.log(3 + 4 * 5 % 3);
+
+// console.log(true);                   //output => true
+// console.log(+true);                  //output => 1
+// console.log(+"");                    //output => 0
+// console.log(true+;)                   //output => error
+
+
+let num1, num2, num3;
+num1 = num2 = num3 = 2+2;       // bad way to assign value
+
+let gameCounter = 100;
+// let a = gameCounter++;
+// console.table([gameCounter, a]);
+
+
+// let b = ++gameCounter;
+// console.table([gameCounter, b]);
