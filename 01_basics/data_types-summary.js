@@ -11,7 +11,7 @@ let userEmail;
 
 const id = Symbol('123');
 const anotherID = Symbol('123');
-console.log(id === anotherID);  //false   Since, both denoted by same  strings but they are not same. Symbol provide uniqueness.
+// console.log(id === anotherID);  //false   Since, both denoted by same  strings but they are not same. Symbol provide uniqueness.
 
 const bigNumber = 7895456512329878532n
 
@@ -31,4 +31,29 @@ let myObj = {
 const myFunction = function(){
     console.log("Hello, World!!");
 }
-console.log(myFunction)
+//console.log(myFunction)
+
+// **************************************************************************************
+ // Stack memory (Primitive Data Types) and Heap Memory (Non-Primitive Data Types)
+
+let userName = "i_am_Nanak";
+
+let myName = userName;  //here copy of data i.e. copy of userName is assign to myName
+console.log(myName);
+
+myName = "Nanak";
+console.log(userName)
+console.log(myName);
+
+
+let userOne = {
+    email: "userOne@google.com",
+    upi: "userOne@ybl"
+}
+
+let userTwo = userOne   // here no copy of data is assign instead actual data refernce is given 
+
+userTwo.email="Nanak@google.com"
+
+console.log(userOne.email);  //Output => Nanak@google.com
+console.log(userTwo.email);  //Output => Nanak@google.com
