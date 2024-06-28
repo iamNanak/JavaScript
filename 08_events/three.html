@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Async Project 2</title>
+</head>
+<body>
+    <h1>JavaScript setInterval</h1>
+    <button id="start">Start</button>
+    <button id="stop">Stop</button>
+    
+</body>
+<script>
+    const interval = function(str){
+        console.log(str, Date.now())
+    };
+//    const intervalID = setInterval(interval, 1000, "hi") //it have a third parameter too.
+
+    // clearInterval(intervalID);
+    
+    let task;
+    const startButton = function(){
+        task = setInterval(print,1000)
+        function print(){
+            console.log("Nanak",Date.now())
+        }
+    }
+
+    const stopButton = function(){
+        clearInterval(task)
+        task = null;
+    }
+
+   document.querySelector('#start').addEventListener('click', startButton)
+
+    document.querySelector('#stop').addEventListener('click', stopButton)
+
+</script>
+</html>
