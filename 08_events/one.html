@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Events</title>
+</head>
+<body  style="background-color: #212121; color: white;">
+    <h2>Amazing images</h2>
+    <div>
+        <ul id="images">
+            <li><img height="200px" src="https://images.pexels.com/photos/18262641/pexels-photo-18262641/free-photo-of-bird-eye-view-on-yacht-in-sea.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load" alt="boat" id="boat"></li>
+            <li><img height="200px" src="https://images.pexels.com/photos/25255053/pexels-photo-25255053/free-photo-of-three-cats-laying-on-the-ground-next-to-a-water-bowl.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load" alt="cats" /*onclick="alert('cats')"*/ id="cats"></li>
+            <li><img height="200px" src="https://images.pexels.com/photos/25430752/pexels-photo-25430752/free-photo-of-death-valley.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load" alt="road" id="road"></li>
+            <li><img height="200px" src="https://images.pexels.com/photos/25747637/pexels-photo-25747637/free-photo-of-a-painting-of-a-colorful-abstract-painting.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load" alt="colors" id="colors"></li>
+            <li><img height="200px" src="https://images.pexels.com/photos/26536274/pexels-photo-26536274/free-photo-of-man-in-hat-sitting-on-bench-in-forest-and-playing-guitar.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load" alt="guitar" id="guitar"></li>
+            <li><a style="color: aliceblue;" id="google" href="https://google.com">Google</a></li>
+        </ul>
+    </div>
+    
+</body>
+<script>
+    // document.getElementById('cats').onclick = function() {   //there is no problem in using onclick but,
+    //     alert('cats clicked')                   // it give less features, use instead addEventListner
+    // }
+
+    //Best Option
+
+    // attachEvent() was used for Internet Explorer
+    // jQuery - on event was there 
+    // document.getElementById('cats').addEventListener('click', function(e){ // e is event object
+    //     // alert('cats clicked')
+    //     // console.log(e)        // type, timestamp, preventDefault, target, toElement. srcElement,        currentTarget, clientX, clientY, screenX, screenY, altkey, ctrlkey, keyCode, shiftkey
+    // }, false) //3rd parameter is default at False it is about Event Propagation
+    
+    // // Event Propagation has 2 context :- 1. Event Bubling, 2. Event Capturing
+
+    // document.getElementById('images').addEventListener('click', function(e){
+    //     // console.log('clicked inside the ul')
+    // }, false)
+
+    // document.getElementById('cats').addEventListener('click', function(e) {
+    //     // console.log('cats clicked')
+    //     // e.stopPropagation()
+    // }, false)   // condition of both false case, first console will be 'cats clicked' and then 'clicked inside the ul' . This is Bubbling event  (child to parent)
+
+    // // condtion on both true case, first console will be 'clicked inside the ul' and then 'cats clicked'
+    // // this is Capturing Event (parent to child)
+
+    // // to restrict the capturing or bubbling method use stopPropagation()
+
+    // document.getElementById('google').addEventListener('click',function(e){
+    //     // console.log('google clicked')
+    //     // e.stopPropagation();
+    //     // e.preventDefault();
+    // }, false)
+
+
+    document.querySelector('#images').addEventListener('click', function(e){
+        // console.log(e.target.parentNode );
+        let removeIt = e.target.parentNode;   //select element is 'li'
+        // removeIt.remove()
+        // removeIt.parentNode.removeChild(removeIt)  //select element is 'li' parentNode i.e. 'ul' then remove child i.e. 'li'
+        // problem in this selection is if we click on any li not images but at list items then whole ul be deleted 
+        // since parent of li is ul
+    }, false)
+
+    document.querySelector('#images').addEventListener('click', function(e){
+        console.log(e.target.tagName);  // IMG for images and LI for list items
+        if(e.target.tagName === 'IMG'){
+            console.log(e.target.id)
+            let removeIt = e.target.parentNode;
+            removeIt.remove();
+        }
+    }, false)
+
+</script>
+</html>
