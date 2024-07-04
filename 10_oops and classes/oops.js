@@ -7,7 +7,7 @@ const user = {
         console.log("Got user details from User");
         // console.log(`UserName: ${name}`)  // reference error 
         console.log(`Username: ${this.name}`)
-        console.log(this)
+        console.log(this)    //current context i.e. user 
     }
 }
 
@@ -38,7 +38,7 @@ const user1 = new User("Nanak", 10, true);
 const user2 = new User("Pankhuri", 12, true);
 console.log(user1);
 console.log(user2);
-console.log(user1.constructor)    // [Function: User]
+console.log(user1.constructor)    // [Function: User]   reference to object itself.
 
 // new keyword is used as Constructor. It help to construct new instances or object
 // new keyword call constructor function. it return all arguments etc. and return it 
