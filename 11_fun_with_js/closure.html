@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Closure</title>
+</head>
+<body style="background-color: #212121;">
+    <button id="Orange">Orange</button>
+    <button id="Green">Green</button>
+</body>
+<script>
+    // function init() {
+    //     let name = "Mozilla"
+    //     function displayName(){
+    //         console.log(name)
+    //     }
+    //     displayName();
+    // }
+    // init();
+
+
+    // function outer(){
+    //     let username = "Nanak"
+    //     function inner(){
+    //         let secret = "asdlfkls"
+    //         console.log("inner:",username)    // inner: Nanak   because of Lexical Scoping
+    //     }
+    //     console.log(secret)  //error
+    //     function inner2(){
+    //         console.log(secret)  // error
+    //         console.log("inner2:", username)  // inner2: Nanak  because of Lexical Scoping
+    //     }
+    //     inner();      // child function can access the properties of parent function but 
+    //     inner2();     // 1. child function can't access each other properties   2. parent function also can't access the child properties
+
+    // }
+    // outer();
+    // console.log("too outer:",username)
+
+
+    function makeFunc(){
+        const name = "Mozilla"
+        function displayName(){
+            console.log(name)
+        }
+        return displayName;   // when you return the whole function then its not only function get return intead its whole lexical scope get returned
+    }
+
+    const myFunc = makeFunc();
+    myFunc();
+</script>
+
+<script>
+    // document.getElementById('Orange').onclick = function(){
+    //     document.body.style.backgroundColor = 'Orange'
+    // }
+    // document.getElementById('Green').onclick = function(){
+    //     document.body.style.backgroundColor = 'Green'
+    // }
+
+    function clickHandle(color){
+        return function(){
+            document.body.style.backgroundColor = color
+        }
+    }
+
+    document.getElementById('Orange').onclick = clickHandle('orange')
+    document.getElementById('Green').onclick = clickHandle('green')
+</script>
+</html>
